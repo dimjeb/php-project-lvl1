@@ -1,0 +1,12 @@
+{
+    "name": "hexlet/code",
+    "description": "my 1st project",
+    "type": "p",
+    "authors": [
+        {
+            "name": "Dmitriy Zhebrovskiy",
+            "email": "dimjeb@gmail.com"
+        }
+    ],
+    "require": {}
+}
