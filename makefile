@@ -8,3 +8,5 @@ push:
 	git add .
 	git commit -m $desc
 	git push
+lint:
+	composer exec --verbose phpcs -- --standard=PSR12 src bin
