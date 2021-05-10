@@ -2,11 +2,6 @@
 <?php
 namespace Brain\Calc;
 require_once __DIR__ . '/../../vendor/autoload.php';
-function in($greet)
-{
-    echo $greet, ' ';
-    return trim(fgets(STDIN));
-}
 $name = in('May I have your name?');
 echo "Hello, $name!", PHP_EOL;
 echo 'Welcome to the Brain Game!', PHP_EOL, 'What is the result of the expression?', PHP_EOL;

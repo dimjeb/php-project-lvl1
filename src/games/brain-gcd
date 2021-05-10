@@ -1,0 +1,26 @@
+#!/usr/bin/env php
+<?php
+namespace Brain\Games\Cli;
+require_once __DIR__ . '/../../vendor/autoload.php';
+
+echo "Welcome to the Brain Games!", PHP_EOL;
+$name = in("May I have your name? ");
+echo "Hello, ", $name, "!";
+echo "Find the greatest common divisor of given numbers.", PHP_EOL;
+for ($i = 1; $i <= 3; $i++) {
+    $num1 = rand(1, 10);
+    $num2 = rand(1, 10);
+    echo "Question: ", $num1, " ", $num2, PHP_EOL;
+    $answer = in("Your answer: ");
+    $result = gcd($num1, $num2);
+    if($answer == $result)
+    {
+    echo "Correct", PHP_EOL;
+    }
+    else
+    {
+    echo "'", $answer, "' is wrong answer ;(. Correct answer was '", $result, "'", PHP_EOL, "Let's try again, ", $name, "!";
+    break;
+    }
+}
+echo "Congratulations, ", $name. "!", PHP_EOL;

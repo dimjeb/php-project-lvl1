@@ -6,6 +6,8 @@ brain-even:
 	php src/games/brain-even
 brain-calc:
 	php src/games/brain-calc
+brain-gcd:
+	php src/games/brain-gcd
 validate:
 	composer validate
 push:

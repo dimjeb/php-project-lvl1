@@ -10,10 +10,13 @@
     "bin": [
     "src/games/brain-games",
     "src/games/brain-even",
-    "src/games/brain-calc"
-  ],
+    "src/games/brain-calc",
+      "src/games/brain-gcd"
+    ],
   "autoload": {
     "files": [
-      "src/Cli.php"
+      "src/Cli.php",
+      "src/engine.php",
+      "src/in.php"
     ]
   }}
