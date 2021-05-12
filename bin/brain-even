@@ -1,0 +1,30 @@
+#!/usr/bin/env php
+<?php
+namespace Brain\Even;
+require_once __DIR__ . '/../vendor/autoload.php';
+function in($greet)
+{
+    echo $greet, ' ';
+    return trim(fgets(STDIN));
+}
+$name = in('May I have your name?');
+echo "Hello, $name!", PHP_EOL;
+echo 'Welcome to the Brain Game!', PHP_EOL, 'Answer "yes" if the number is even, otherwise answer "no".', PHP_EOL;
+for ($i=0; $i<3; $i++) {
+    $temp = rand(0, 20);
+    echo "Question: ", $temp, PHP_EOL;
+    $answer = in("Your answer: ");
+    if (($answer == "yes" && $temp % 2 == 0) || ($answer == "no" && $temp % 2 != 0)) {
+        echo "Correct!", PHP_EOL;
+    } elseif ($answer == "yes" && $temp % 2 != 0) {
+        echo "'yes' is wrong answer ;(. Correct answer was 'no'.", PHP_EOL;
+        $i--;
+    } elseif ($answer == "no" && $temp % 2 == 0) {
+        echo "'no' is wrong answer ;(. Correct answer was 'yes'.", PHP_EOL;
+        $i--;
+    }elseif ($answer != "no" && $answer != "yes") {
+        echo $answer, " is wrong answer ;(. Correct answer was 'yes' or 'no'.", PHP_EOL;
+        $i--;
+    }
+}
+echo "Congratulations, ", $name, "!", PHP_EOL;
