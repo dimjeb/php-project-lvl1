@@ -1,0 +1,35 @@
+#!/usr/bin/env php
+<?php
+namespace Brain\Even;
+require_once __DIR__ . '/../vendor/autoload.php';
+function in($greet)
+{
+    echo $greet, ' ';
+    return trim(fgets(STDIN));
+}
+$name = in('May I have your name?');
+echo "Hello, $name!", PHP_EOL;
+echo 'Welcome to the Brain Game!', PHP_EOL, 'What is the result of the expression?', PHP_EOL;
+$correct = true;
+$signs = ['+', '-', '*'];
+for ($i = 0; $i < 3; $i++) {
+    $num1 = rand(0, 100);
+    $num2 = rand(0, 100);
+    $ind = rand(0, 2);
+    $exp = $num1 . $signs[$ind] . $num2;
+    $result = eval('return ' . $exp . ';');
+    echo "Question: ", $exp, PHP_EOL;
+    $answer = in("Your answer: ");
+    if ($answer == $result) {
+        echo "Correct!", PHP_EOL;
+        $correct = true;
+    } elseif ($answer != $result) {
+        echo $answer, " is wrong answer ;(. Correct answer was ", $result, ".", PHP_EOL, "Let's try again, ", $name, "!", PHP_EOL;
+        $correct = false;
+        break;
+    }
+}
+if ($correct == true)
+{
+    echo "Congratulations, ", $name, "!", PHP_EOL;
+}
