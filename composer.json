@@ -1,8 +1,14 @@
 {
+    "description": "1st project",
+    "license": "MIT",
     "name": "dim/php-project-lvl1",
     "type": "library",
     "require":{},
     "require-dev": {
         "squizlabs/php_codesniffer": "3.*"
-    }
+    },
+    "bin": [
+    "bin/brain-games",
+    "bin/brain-even"
+  ]
 }
