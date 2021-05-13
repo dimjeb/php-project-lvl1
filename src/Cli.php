@@ -1,5 +1,4 @@
 <?php
-
 function hello()
 {
      echo 'Welcome to the Brain Game!', PHP_EOL;
