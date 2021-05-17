@@ -18,3 +18,16 @@ function in($greet)
     echo $greet, ' ';
     return trim(fgets(STDIN));
 }
+
+function Progression($length)
+{
+    $result = []; // массив с результатами
+    $temp = rand(1, 5); // инкремент
+    $result[0] = rand(1, 20); // первое число
+
+    for($i = 1; $i <= $length - 1; $i++)
+    {
+            $result[] = $result[$i - 1] + $temp;
+    }
+    return $result;
+}

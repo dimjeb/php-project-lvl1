@@ -11,7 +11,8 @@
     "src/games/brain-games",
     "src/games/brain-even",
     "src/games/brain-calc",
-      "src/games/brain-gcd"
+      "src/games/brain-gcd",
+      "src/games/brain-progression"
     ],
   "autoload": {
     "files": [
