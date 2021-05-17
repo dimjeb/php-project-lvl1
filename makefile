@@ -9,7 +9,7 @@ brain-calc:
 brain-gcd:
 	php src/games/brain-gcd
 brain-progression:
-    php src/games/brain-progression
+	php src/games/brain-progression
 validate:
 	composer validate
 push:
