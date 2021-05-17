@@ -1,3 +1,6 @@
+### Brain-gcd run
+https://asciinema.org/a/qJNzUl0mt5bhvILvwDF9ot0w8
+
 ### Record of make install and brain-even run
 [Project #1, part 5] (https://asciinema.org/a/NL0GsiZEjlvj46KugcYDva03X)
 
