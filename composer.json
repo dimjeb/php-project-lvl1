@@ -1,7 +1,7 @@
 {
     "description": "1st project",
     "license": "MIT",
-    "name": "dim/php-project-lvl1",
+    "name": "hexlet/code",
     "type": "library",
     "require":{},
     "require-dev": {
