@@ -1,6 +1,7 @@
 <?php
 
 namespace Brain\Games\Cli;
+
 function gcd($num1, $num2)
 {
     ($num1 > $num2) ? $min = $num2 : $min = $num1;
