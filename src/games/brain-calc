@@ -13,7 +13,7 @@ for ($i = 0; $i < 3; $i++) {
     $ind = rand(0, 2);
     $exp = $num1 . $signs[$ind] . $num2;
     $result = eval('return ' . $exp . ';');
-    echo "Question: ", $exp, PHP_EOL;
+    echo "Question: ", $num1 . ' ' . $signs[$ind] . ' ' . $num2, PHP_EOL;
     $answer = in("Your answer: ");
     if ($answer == $result) {
         echo "Correct!", PHP_EOL;
