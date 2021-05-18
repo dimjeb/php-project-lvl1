@@ -1,4 +1,5 @@
 <?php
+
 function in($greet)
 {
     echo $greet, ' ';

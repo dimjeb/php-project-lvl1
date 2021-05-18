@@ -1,4 +1,5 @@
 <?php
+
 namespace Brain\Games\Cli;
 function gcd($num1, $num2)
 {
@@ -25,8 +26,7 @@ function Progression($length)
     $temp = rand(1, 5); // инкремент
     $result[0] = rand(1, 20); // первое число
 
-    for($i = 1; $i <= $length - 1; $i++)
-    {
+    for ($i = 1; $i <= $length - 1; $i++) {
             $result[] = $result[$i - 1] + $temp;
     }
     return $result;
@@ -34,10 +34,8 @@ function Progression($length)
 
 function prime($number)
 {
-    for($i = 2; $i < $number; $i++)
-    {
-        if($number % $i == 0)
-        {
+    for ($i = 2; $i < $number; $i++) {
+        if ($number % $i == 0) {
             return false;
         }
     }
