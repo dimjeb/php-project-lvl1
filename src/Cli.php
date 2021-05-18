@@ -6,5 +6,5 @@ function hello()
      echo 'May I have your name? ';
 
      $name = trim(fgets(STDIN));
-     echo "Hello, $name!", PHP_EOL;
+     echo "Hello, ", $name, "!", PHP_EOL;
 }
