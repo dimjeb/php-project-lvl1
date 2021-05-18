@@ -10,6 +10,8 @@ brain-gcd:
 	php src/games/brain-gcd
 brain-progression:
 	php src/games/brain-progression
+brain-prime:
+	php src/games/brain-prime
 validate:
 	composer validate
 push:

@@ -11,5 +11,8 @@
 ### Brain-progression run
 [Project #1, part 8]https://asciinema.org/a/JHcgMhBKKoS4VYQPYZwymDlus
 
+### Brain-prime run
+[Project #1, part 9]https://asciinema.org/a/iDuvXAtnNrzxr4tLE4Zb6FKLh
+
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/dimjeb/php-project-lvl1/workflows/hexlet-check/badge.svg)](https://github.com/dimjeb/php-project-lvl1/actions)

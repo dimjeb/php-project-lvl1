@@ -8,11 +8,12 @@
         "squizlabs/php_codesniffer": "3.*"
     },
     "bin": [
-    "src/games/brain-games",
-    "src/games/brain-even",
-    "src/games/brain-calc",
+      "src/games/brain-games",
+      "src/games/brain-even",
+      "src/games/brain-calc",
       "src/games/brain-gcd",
-      "src/games/brain-progression"
+      "src/games/brain-progression",
+      "src/games/brain-prime"
     ],
   "autoload": {
     "files": [
