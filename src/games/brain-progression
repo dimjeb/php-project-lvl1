@@ -29,6 +29,6 @@ for($i=1; $i <= 3; $i++)
         // break;
     }
 }
-if (!$fail) {
+//if (!$fail) {
     echo "Congratulations, ", $name . "!", PHP_EOL;
-}
+//}
