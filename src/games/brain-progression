@@ -24,7 +24,7 @@ for($i=1; $i <= 3; $i++)
         echo "Correct!", PHP_EOL;
     } else {
         echo "'", $answer, "' is wrong answer ;(. Correct answer was '", $hiddenNum, "'.", PHP_EOL, "Let's try again, ", $name, "!", PHP_EOL;
-        break;
+        // break;
     }
 }
 echo "Congratulations, ", $name. "!", PHP_EOL;
