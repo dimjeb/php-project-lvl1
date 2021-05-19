@@ -7,6 +7,7 @@ echo "Welcome to the Brain Games!", PHP_EOL;
 $name = in("May I have your name? ");
 echo "Hello, ", $name, "!", PHP_EOL;
 echo "What number is missing in the progression?", PHP_EOL, "Question: ";
+$fail = false;
 for($i=1; $i <= 3; $i++)
 {
     $progressionLength = rand(5, 10); // длина прогрессии
@@ -24,9 +25,10 @@ for($i=1; $i <= 3; $i++)
         echo "Correct!", PHP_EOL;
     } else {
         echo "'", $answer, "' is wrong answer ;(. Correct answer was '", $hiddenNum, "'.", PHP_EOL, "Let's try again, ", $name, "!", PHP_EOL;
+        $fail = true;
         // break;
     }
 }
-// if ($answer == $hiddenNum) {
+if (!$fail) {
     echo "Congratulations, ", $name . "!", PHP_EOL;
-//}
+}
