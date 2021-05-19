@@ -27,7 +27,4 @@ for($i=1; $i <= 3; $i++)
         // break;
     }
 }
-if ($answer == $hiddenNum)
-{
-    echo "Congratulations, ", $name. "!", PHP_EOL;
-}
+echo "Congratulations, ", $name. "!", PHP_EOL;
