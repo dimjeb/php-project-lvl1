@@ -1,0 +1,30 @@
+#!/usr/bin/env php
+<?php
+namespace Brain\Games\Cli;
+require_once __DIR__ . '/../../vendor/autoload.php';
+
+echo "Welcome to the Brain Games!", PHP_EOL;
+$name = in("May I have your name? ");
+echo "Hello, ", $name, "!", PHP_EOL;
+echo "What number is missing in the progression?", PHP_EOL, "Question: ";
+for($i=1; $i <= 3; $i++)
+{
+    $progressionLength = rand(5, 10); // длина прогрессии
+    $hiddenPos = rand(1, $progressionLength); // позиция скрытого числа
+    $array = progression($progressionLength); // массив с прогрессией
+    $hiddenNum = $array[$hiddenPos - 1]; // получаем скрытое число
+    $array[$hiddenPos - 1] = ".."; // маскируем скрытое число
+    foreach ($array as $item) // выводим массив
+    {
+        echo $item, ' ';
+    }
+    echo PHP_EOL;
+    $answer = in("Your answer: ");
+    if ($answer == $hiddenNum) {
+        echo "Correct!", PHP_EOL;
+    } else {
+        echo "'", $answer, "' is wrong answer ;(. Correct answer was '", $hiddenNum, "'.", PHP_EOL, "Let's try again, ", $name, "!", PHP_EOL;
+        // break;
+    }
+}
+echo "Congratulations, ", $name. "!", PHP_EOL;
