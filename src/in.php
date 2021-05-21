@@ -1,6 +1,6 @@
 <?php
 
-namespace Brain\Games\Cli;
+//namespace Brain\Games\Cli;
 
 function in($greet)
 {
