@@ -7,7 +7,7 @@ echo "Welcome to the Brain Games!", PHP_EOL;
 $name = in("May I have your name? ");
 echo "Hello, ", $name, "!", PHP_EOL;
 echo 'Answer "yes" if given number is prime. Otherwise answer "no".', PHP_EOL;
-$flag = false;
+//$flag = false;
 
 for ($i = 1; $i <= 3; $i++)
 {
@@ -17,23 +17,23 @@ for ($i = 1; $i <= 3; $i++)
     if ($answer != 'yes' && $answer != 'no')
     {
         echo "'", $answer, "' is wrong answer ;(. Correct answer is 'yes' or 'no'", PHP_EOL, "Let's try again, ", $name, "!", PHP_EOL;
-        $flag = false;
+ //       $flag = false;
         break;
     }
     elseif ($answer === 'yes' && prime($number))
     {
         echo "Correct! ", PHP_EOL;
-        $flag = true;
+//        $flag = true;
     }
     elseif ($answer === 'no' && !prime($number))
     {
         echo "Correct! ", PHP_EOL;
-        $flag = true;
+//        $flag = true;
     }
     else
     {
-        echo "Not correct! Let's try again, ", $name, "!", PHP_EOL;
-        $flag = false;
+        echo "Let's try again, ", $name, "!", PHP_EOL;
+ //       $flag = false;
         break;
     }
 }
