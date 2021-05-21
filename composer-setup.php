@@ -157,9 +157,9 @@ function setUseAnsi($argv)
 /**
  * Returns the value of a command-line option
  *
- * @param string $opt The command-line option to check
- * @param array $argv Command-line arguments
- * @param mixed $default Default value to be returned
+ * @param string $opt     The command-line option to check
+ * @param array  $argv    Command-line arguments
+ * @param mixed  $default Default value to be returned
  *
  * @return mixed The command-line value or the default
  */
@@ -185,8 +185,8 @@ function getOptValue($opt, $argv, $default)
  * Checks that user-supplied params are valid
  *
  * @param mixed $installDir The required istallation directory
- * @param mixed $version The required composer version to install
- * @param mixed $cafile Certificate Authority file
+ * @param mixed $version    The required composer version to install
+ * @param mixed $cafile     Certificate Authority file
  *
  * @return bool True if the supplied params are okay
  */
@@ -216,10 +216,10 @@ function checkParams($installDir, $version, $cafile)
  *
  * Errors are written to the output, warnings are saved for later display.
  *
- * @param array $warnings Populated by method, to be shown later
- * @param bool $quiet Quiet mode
- * @param bool $disableTls Bypass tls
- * @param bool $install If we are installing, rather than diagnosing
+ * @param array $warnings   Populated by method, to be shown later
+ * @param bool  $quiet      Quiet mode
+ * @param bool  $disableTls Bypass tls
+ * @param bool  $install    If we are installing, rather than diagnosing
  *
  * @return bool True if there are no errors
  */
@@ -250,9 +250,9 @@ function checkPlatform(&$warnings, $quiet, $disableTls, $install)
 /**
  * Checks platform configuration for common incompatibility issues
  *
- * @param array $errors Populated by method
+ * @param array $errors   Populated by method
  * @param array $warnings Populated by method
- * @param bool $install If we are installing, rather than diagnosing
+ * @param bool  $install  If we are installing, rather than diagnosing
  *
  * @return bool If any errors or warnings have been found
  */
@@ -412,7 +412,8 @@ function getPlatformIssues(&$errors, &$warnings, $install)
     if (defined('PHP_WINDOWS_VERSION_BUILD')
         && (version_compare(PHP_VERSION, '7.2.23', '<')
         || (version_compare(PHP_VERSION, '7.3.0', '>=')
-        && version_compare(PHP_VERSION, '7.3.10', '<')))) {
+        && version_compare(PHP_VERSION, '7.3.10', '<')))
+    ) {
         $warnings['onedrive'] = array(
             'The Windows OneDrive folder is not supported on PHP versions below 7.2.23 and 7.3.10.',
             'Upgrade your PHP ('.PHP_VERSION.') to use this location with Composer.'
@@ -570,6 +571,7 @@ function getHomeDir()
 
 /**
  * Returns the location of the user directory from the environment
+ *
  * @throws RuntimeException If the environment value does not exists
  *
  * @return string
@@ -608,8 +610,7 @@ function validateCaFile($contents)
 {
     // assume the CA is valid if php is vulnerable to
     // https://www.sektioneins.de/advisories/advisory-012013-php-openssl_x509_parse-memory-corruption-vulnerability.html
-    if (
-        PHP_VERSION_ID <= 50327
+    if (PHP_VERSION_ID <= 50327
         || (PHP_VERSION_ID >= 50400 && PHP_VERSION_ID < 50422)
         || (PHP_VERSION_ID >= 50500 && PHP_VERSION_ID < 50506)
     ) {
@@ -638,9 +639,9 @@ class Installer
     /**
      * Constructor - must not do anything that throws an exception
      *
-     * @param bool $quiet Quiet mode
-     * @param bool $disableTls Bypass tls
-     * @param mixed $cafile Path to CA bundle, or false
+     * @param bool  $quiet      Quiet mode
+     * @param bool  $disableTls Bypass tls
+     * @param mixed $cafile     Path to CA bundle, or false
      */
     public function __construct($quiet, $disableTls, $caFile)
     {
@@ -655,10 +656,10 @@ class Installer
     /**
      * Runs the installer
      *
-     * @param mixed $version Specific version to install, or false
-     * @param mixed $installDir Specific installation directory, or false
-     * @param string $filename Specific filename to save to, or composer.phar
-     * @param string $channel Specific version channel to use
+     * @param  mixed  $version    Specific version to install, or false
+     * @param  mixed  $installDir Specific installation directory, or false
+     * @param  string $filename   Specific filename to save to, or composer.phar
+     * @param  string $channel    Specific version channel to use
      * @throws Exception If anything other than a RuntimeException is caught
      *
      * @return bool If the installation succeeded
@@ -700,8 +701,8 @@ class Installer
     /**
      * Initialization methods to set the required filenames and composer url
      *
-     * @param mixed $installDir Specific installation directory, or false
-     * @param string $filename Specific filename to save to, or composer.phar
+     * @param  mixed  $installDir Specific installation directory, or false
+     * @param  string $filename   Specific filename to save to, or composer.phar
      * @throws RuntimeException If the installation directory is not writable
      */
     protected function initTargets($installDir, $filename)
@@ -722,6 +723,7 @@ class Installer
 
     /**
      * A wrapper around methods to check tls and write public keys
+     *
      * @throws RuntimeException If SHA384 is not supported
      */
     protected function initTls()
@@ -749,6 +751,7 @@ class Installer
 
     /**
      * Returns the Composer home directory, creating it if required
+     *
      * @throws RuntimeException If the directory cannot be created
      *
      * @return string
@@ -761,11 +764,13 @@ class Installer
             $this->errHandler->start();
 
             if (!mkdir($home, 0777, true)) {
-                throw new RuntimeException(sprintf(
-                    'Unable to create Composer home directory "%s": %s',
-                    $home,
-                    $this->errHandler->message
-                ));
+                throw new RuntimeException(
+                    sprintf(
+                        'Unable to create Composer home directory "%s": %s',
+                        $home,
+                        $this->errHandler->message
+                    )
+                );
             }
             $this->installs[] = $home;
             $this->errHandler->stop();
@@ -776,9 +781,9 @@ class Installer
     /**
      * Writes public key data to disc
      *
-     * @param string $data The public key(s) in pem format
-     * @param string $path The directory to write to
-     * @param string $filename The name of the file
+     * @param  string $data     The public key(s) in pem format
+     * @param  string $path     The directory to write to
+     * @param  string $filename The name of the file
      * @throws RuntimeException If the file cannot be written
      *
      * @return string The path to the saved data
@@ -808,7 +813,7 @@ class Installer
     /**
      * The main install function
      *
-     * @param mixed $version Specific version to install, or false
+     * @param mixed  $version Specific version to install, or false
      * @param string $channel Version channel to use
      *
      * @return bool If the installation succeeded
@@ -861,10 +866,10 @@ class Installer
     /**
      * Sets the version url, downloading version data if required
      *
-     * @param string $channel Version channel to use
+     * @param string       $channel Version channel to use
      * @param false|string $version Version to install, or set by method
-     * @param null|string $url The versioned url, set by method
-     * @param null|string $error Set by method on failure
+     * @param null|string  $url     The versioned url, set by method
+     * @param null|string  $error   Set by method on failure
      *
      * @return bool If the operation succeeded
      */
@@ -892,7 +897,7 @@ class Installer
     /**
      * Downloads and json-decodes version data
      *
-     * @param null|array $data Downloaded version data, set by method
+     * @param null|array  $data  Downloaded version data, set by method
      * @param null|string $error Set by method on failure
      *
      * @return bool If the operation succeeded
@@ -917,9 +922,9 @@ class Installer
     /**
      * A wrapper around the methods needed to download and save the phar
      *
-     * @param string $url The versioned download url
+     * @param string      $url       The versioned download url
      * @param null|string $signature Set by method on successful download
-     * @param null|string $error Set by method on failure
+     * @param null|string $error     Set by method on failure
      *
      * @return bool If the operation succeeded
      */
@@ -950,9 +955,9 @@ class Installer
     /**
      * Verifies the downloaded file and saves it to the target location
      *
-     * @param string $version The composer version downloaded
-     * @param string $signature The digital signature to check
-     * @param null|string $error Set by method on failure
+     * @param string      $version   The composer version downloaded
+     * @param string      $signature The digital signature to check
+     * @param null|string $error     Set by method on failure
      *
      * @return bool If the operation succeeded
      */
@@ -982,10 +987,10 @@ class Installer
     /**
      * Parses an array of version data to match the required channel
      *
-     * @param array $data Downloaded version data
-     * @param mixed $channel Version channel to use
+     * @param array        $data    Downloaded version data
+     * @param mixed        $channel Version channel to use
      * @param false|string $version Set by method
-     * @param mixed $url The versioned url, set by method
+     * @param mixed        $url     The versioned url, set by method
      */
     protected function parseVersionData(array $data, $channel, &$version, &$url)
     {
@@ -1012,7 +1017,7 @@ class Installer
     /**
      * Downloads the digital signature of required phar file
      *
-     * @param string $url The signature url
+     * @param string      $url       The signature url
      * @param null|string $signature Set by method on success
      *
      * @return bool If the download succeeded
@@ -1035,9 +1040,9 @@ class Installer
     /**
      * Verifies the signature of the downloaded phar
      *
-     * @param string $version The composer versione
+     * @param string $version   The composer versione
      * @param string $signature The downloaded digital signature
-     * @param string $file The temp phar file
+     * @param string $file      The temp phar file
      *
      * @return bool If the operation succeeded
      */
@@ -1066,8 +1071,8 @@ class Installer
     /**
      * Validates the downloaded phar file
      *
-     * @param string $pharFile The temp phar file
-     * @param null|string $error Set by method on failure
+     * @param string      $pharFile The temp phar file
+     * @param null|string $error    Set by method on failure
      *
      * @return bool If the operation succeeded
      */
@@ -1129,7 +1134,6 @@ class Installer
 
     /**
      * Outputs unique errors when in quiet mode
-     *
      */
     protected function outputErrors()
     {
@@ -1146,7 +1150,6 @@ class Installer
 
     /**
      * Uninstalls newly-created files and directories on failure
-     *
      */
     protected function uninstall()
     {
@@ -1213,7 +1216,7 @@ class ErrorHandler
      * Handle php errors
      *
      * @param mixed $code The error code
-     * @param mixed $msg The error message
+     * @param mixed $msg  The error message
      */
     public function handleError($code, $msg)
     {
@@ -1299,7 +1302,8 @@ class NoProxyPattern
     }
 }
 
-class HttpClient {
+class HttpClient
+{
 
     private $options = array('http' => array());
     private $disableTls = false;
@@ -1364,7 +1368,8 @@ class HttpClient {
 
     protected function getTlsStreamContextDefaults($cafile)
     {
-        $ciphers = implode(':', array(
+        $ciphers = implode(
+            ':', array(
             'ECDHE-RSA-AES128-GCM-SHA256',
             'ECDHE-ECDSA-AES128-GCM-SHA256',
             'ECDHE-RSA-AES256-GCM-SHA384',
@@ -1406,7 +1411,8 @@ class HttpClient {
             '!EDH-DSS-DES-CBC3-SHA',
             '!EDH-RSA-DES-CBC3-SHA',
             '!KRB5-DES-CBC3-SHA',
-        ));
+            )
+        );
 
         /**
          * CN_match and SNI_server_name are only known once a URL is passed.
@@ -1453,7 +1459,7 @@ class HttpClient {
      *
      * Any changes should be applied there as well, or backported here.
      *
-     * @param string $url URL the context is to be used for
+     * @param  string $url URL the context is to be used for
      * @return resource Default context
      * @throws \RuntimeException if https proxy required and OpenSSL uninstalled
      */
@@ -1546,37 +1552,37 @@ class HttpClient {
     }
 
     /**
-    * This method was adapted from Sslurp.
-    * https://github.com/EvanDotPro/Sslurp
-    *
-    * (c) Evan Coury <me@evancoury.com>
-    *
-    * For the full copyright and license information, please see below:
-    *
-    * Copyright (c) 2013, Evan Coury
-    * All rights reserved.
-    *
-    * Redistribution and use in source and binary forms, with or without modification,
-    * are permitted provided that the following conditions are met:
-    *
-    *     * Redistributions of source code must retain the above copyright notice,
-    *       this list of conditions and the following disclaimer.
-    *
-    *     * Redistributions in binary form must reproduce the above copyright notice,
-    *       this list of conditions and the following disclaimer in the documentation
-    *       and/or other materials provided with the distribution.
-    *
-    * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-    * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-    * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-    * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
-    * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-    * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-    * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
-    * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-    * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-    * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-    */
+     * This method was adapted from Sslurp.
+     * https://github.com/EvanDotPro/Sslurp
+     *
+     * (c) Evan Coury <me@evancoury.com>
+     *
+     * For the full copyright and license information, please see below:
+     *
+     * Copyright (c) 2013, Evan Coury
+     * All rights reserved.
+     *
+     * Redistribution and use in source and binary forms, with or without modification,
+     * are permitted provided that the following conditions are met:
+     *
+     *     * Redistributions of source code must retain the above copyright notice,
+     *       this list of conditions and the following disclaimer.
+     *
+     *     * Redistributions in binary form must reproduce the above copyright notice,
+     *       this list of conditions and the following disclaimer in the documentation
+     *       and/or other materials provided with the distribution.
+     *
+     * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+     * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+     * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+     * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+     * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+     * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+     * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+     * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+     * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+     * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+     */
     public static function getSystemCaRootBundlePath()
     {
         static $caPath = null;
