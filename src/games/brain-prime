@@ -32,7 +32,7 @@ for ($i = 1; $i <= 3; $i++)
     }
     else
     {
-        echo "Not correct! Try again, ", $name, "!", PHP_EOL;
+        echo "Not correct! Let's try again, ", $name, "!", PHP_EOL;
         $flag = false;
         break;
     }
