@@ -37,7 +37,7 @@ for ($i = 1; $i <= 3; $i++)
         break;
     }
 }
-if ($flag === true)
-{
+//if ($flag === true)
+//{
     echo "Congratulations, ", $name. "!", PHP_EOL;
-}
+//}
