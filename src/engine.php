@@ -2,7 +2,7 @@
 
 namespace Brain\Games\Cli;
 
-function gcd($num1, $num2)
+function gcd(int $num1, int $num2): int
 {
     ($num1 > $num2) ? $min = $num2 : $min = $num1;
     $gcd = 1;
