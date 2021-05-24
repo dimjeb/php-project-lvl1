@@ -1,6 +1,6 @@
 <?php
 
-function hello()
+function null hello()
 {
      echo 'Welcome to the Brain Game!', PHP_EOL;
      echo 'May I have your name? ';
