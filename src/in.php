@@ -2,8 +2,8 @@
 
 //namespace Brain\Games\Cli;
 
-function in(string $greet)
+function in(string $greet): string
 {
     echo $greet, ' ';
-    return trim(fgets(STDIN));
+    return trim((string)fgets(STDIN));
 }

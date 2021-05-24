@@ -18,7 +18,7 @@ function gcd(int $num1, int $num2): int
 function in(string $greet): string
 {
     echo $greet, ' ';
-    return trim(fgets(STDIN));
+    return trim((string)fgets(STDIN));
 }
 
 function Progression(int $length): array
